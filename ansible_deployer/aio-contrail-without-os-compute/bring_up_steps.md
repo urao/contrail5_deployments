@@ -24,7 +24,7 @@ ansible-playbook -i inventory/ playbooks/configure_instances.yml
 ```
 9. Verify if the requirements  was successful.
 ```
-192.168.122.238            : ok=31   changed=22   unreachable=0    failed=0   
+192.168.122.84            : ok=31   changed=22   unreachable=0    failed=0   
 localhost                  : ok=10   changed=2    unreachable=0    failed=0   
 ```
 10. Deploy Contrail containers
