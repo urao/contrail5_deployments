@@ -41,7 +41,7 @@ cd
 git clone http://github.com/Juniper/contrail-ansible-deployer
 cd contrail-ansible-deployer
 ```
-8. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/ansible_deployer/aio-openstack-contrail/instances.yaml) into config/ folder
+8. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/ansible_deployer/aio-openstack-contrail/instances.yaml) into config/ folder
 9. Modify ssh_pwd, ip, contrail_api_interface_address, keystone_admin_password, CONTROL_DATA_NET_LIST, CONTROLLER_NODES, VROUTER_GATEWAY in the instances.yaml file copied from the previous step
 10. Install Contrail and Kolla requirements
 ```
