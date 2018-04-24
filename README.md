@@ -1,2 +1,2 @@
 # contrail5_deployments
-Different deployments using contrail 5+
+Different deployment scenarios using contrail 5+
