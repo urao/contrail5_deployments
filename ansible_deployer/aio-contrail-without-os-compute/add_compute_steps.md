@@ -4,7 +4,7 @@
 1. Bring up a Centos 7.4 VM with 4 vCPU, 32 GB of RAM and 100 GB of disk with default partition
 2. VM will have 1 NIC, eth0 configured with static IP/DHCP.
 3. Make sure internet is accessible via interface eth0
-4. Copy [instances_addcompute.yaml](https://github.com/urao/contrail5_deployments/blob/master/ansible_deployer/aio-contrail-without-os-compute/instances.yaml) into config/ folder
+4. Copy [instances_addcompute.yaml](https://github.com/urao/contrail5_deployments/blob/master/ansible_deployer/aio-contrail-without-os-compute/instances_add_compute.yaml) into config/ folder
 5. Rename the above yaml file to instances.yaml
 6. Make sure ansible version 2.4.2.0 is running, by default 2.5.x is installed
 ```
@@ -57,5 +57,6 @@ vrouter               464339  2
 
 ## Reference
 [Contrail Wiki Link](https://github.com/Juniper/contrail-ansible-deployer/wiki/Contrail-with-Kolla-Ocata)
+
 [Contrail FAQ Link](https://github.com/Juniper/contrail-ansible-deployer/wiki/Provisioning-F.A.Q)
 
