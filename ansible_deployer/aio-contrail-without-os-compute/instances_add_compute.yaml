@@ -1,0 +1,36 @@
+provider_config:
+  bms:
+    ssh_pwd: contrail123
+    ssh_user: root
+    domainsuffix: local
+    ntpserver: 10.84.5.100
+instances:
+  bms1:
+    provider: bms
+    ip: 192.168.122.84
+    roles:
+        config_database:
+        config:
+        control:
+        analytics_database:
+        analytics:
+        webui:
+  bms2:
+    provider: bms
+    ip: 192.168.122.207
+    roles:
+        vrouter:
+           VROUTER_GATEWAY: 192.168.122.1
+           PHYSICAL_INTERFACE: eth0
+
+global_configuration:
+  CONTAINER_REGISTRY: opencontrailnightly
+  REGISTRY_PRIVATE_INSECURE: True
+
+contrail_configuration:
+  CONTRAIL_VERSION: latest
+  CLOUD_ORCHESTRATOR: none
+  UPGRADE_KERNEL: true
+  CONTROL_DATA_NET_LIST: 192.168.122.0/24
+  CONTROLLER_NODES: 192.168.122.84
+  REDIS_NODES: 192.168.122.84

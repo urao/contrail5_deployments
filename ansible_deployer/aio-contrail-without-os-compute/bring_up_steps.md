@@ -1,5 +1,5 @@
 
-## Steps to deploy all-in-one Contrail + Kolla Ocata OpenStack
+## Steps to deploy all-in-one Contrail Without Kolla Ocata OpenStack and Compute
 
 1. Bring up a Centos 7.4 VM with 4 vCPU, 32 GB of RAM and 510 GB of disk with default partition
 2. VM will have 1 NIC, eth0 configured with static IP/DHCP.
