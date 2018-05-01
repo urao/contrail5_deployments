@@ -1,8 +1,9 @@
 provider_config:
   bms:
-    ssh_pwd: vagrant
+    ssh_pwd: root
+    ssh_user: vagrant
     domainsuffix: local
-    ntpserver: 10.84.5.100
+    ntpserver: 216.58.194.174
 instances:
   bms1:
     provider: bms
@@ -19,7 +20,7 @@ instances:
         openstack_storage:
         openstack_monitoring:
         vrouter:
-          PHYSICAL_INTERFACE: 
+          PHYSICAL_INTERFACE: enp0s8
         openstack_compute:
 kolla_config:
   customize:
@@ -28,7 +29,7 @@ kolla_config:
       virt_type=qemu
       cpu_mode=none
   kolla_globals:
-    network_interface: eth1
+    network_interface: enp0s8
     openstack_release: ocata
     contrail_api_interface_address: 192.168.100.10
     enable_haproxy: no
