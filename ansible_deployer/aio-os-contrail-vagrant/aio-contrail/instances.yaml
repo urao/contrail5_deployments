@@ -1,0 +1,55 @@
+provider_config:
+  bms:
+    ssh_pwd: vagrant
+    domainsuffix: local
+    ntpserver: 10.84.5.100
+instances:
+  bms1:
+    provider: bms
+    ip: 192.168.100.10
+    roles:
+        config_database:
+        config:
+        control:
+        analytics_database:
+        analytics:
+        webui:
+        openstack_control:
+        openstack_network:
+        openstack_storage:
+        openstack_monitoring:
+        vrouter:
+          PHYSICAL_INTERFACE: 
+        openstack_compute:
+kolla_config:
+  customize:
+    nova.conf: |
+      [libvirt]
+      virt_type=qemu
+      cpu_mode=none
+  kolla_globals:
+    network_interface: eth1
+    openstack_release: ocata
+    contrail_api_interface_address: 192.168.100.10
+    enable_haproxy: no
+    enable_swift: no
+    enable_barbican: no
+    enable_heat: no
+  kolla_passwords:
+    keystone_admin_password: contrail123
+global_configuration:
+  CONTAINER_REGISTRY: opencontrailnightly
+contrail_configuration:
+  REGISTRY_PRIVATE_INSECURE: True
+  CONTRAIL_VERSION: latest
+  CLOUD_ORCHESTRATOR: openstack
+  UPGRADE_KERNEL: true
+  CONTROL_DATA_NET_LIST: 192.168.100.0/24
+  CONTROLLER_NODES: 192.168.100.10
+  RABBITMQ_NODE_PORT: 5673
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  VROUTER_GATEWAY: 192.168.100.1
+  two_interface: true
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2

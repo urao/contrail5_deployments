@@ -1,0 +1,24 @@
+# set mode to ruby
+# vi: set ft=ruby :
+#
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.box = "hashicorp-vagrant/centos-7.4"
+    config.ssh.username = 'root'
+    config.ssh.password = 'vagrant'
+    config.ssh.insert_key = 'true'
+
+    config.vm.define "aiocontrail", primary: true do |aiocontrail|
+        aiocontrail.vm.provider "virtualbox" do |v, override|
+            v.name = "aiocontrail"
+            v.memory = 32764
+            v.cpus = 6
+            v.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
+                        override.vm.network :private_network, ip: '192.168.100.10'
+        end
+     aiocontrail.vm.provision "shell", path: "aiocontrail/provision_vm.sh", args: "aiocontrail"
+     aiocontrail.vm.provision "file", source: "aiocontrail/instances.yaml", destination: "/home/vagrant/contrail-ansible-deployer/config/instances.yaml"
+     aiocontrail.vm.provision "shell", path: "aiocontrail/deploy_contrail50.sh"
+     end
+end
