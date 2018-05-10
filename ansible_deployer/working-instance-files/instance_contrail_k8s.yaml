@@ -1,0 +1,39 @@
+global_configuration:
+   CONTAINER_REGISTRY: hub.juniper.net/contrail
+   CONTAINER_REGISTRY_USERNAME: <USER_NAME>
+   CONTAINER_REGISTRY_PASSWORD: <PASSWORD>
+provider_config:
+  bms:
+    domainsuffix: local
+    ntpserver: 192.168.122.1
+    ssh_pwd: contrail123
+    ssh_user: root
+instances:
+  server1:
+      ip: 192.168.100.105
+      provider: bms
+      roles:
+          analytics: null
+          analytics_database: null
+          config: null
+          config_database: null
+          control: null
+          webui: null
+          k8s_master: null
+          kubemanager: null
+  server2:
+      ip: 192.168.100.106
+      provider: bms
+      roles:
+          vrouter: null
+          k8s_node: null
+contrail_configuration:
+  CONTRAIL_VERSION: 5.0.0-0.40
+  CLOUD_ORCHESTRATOR: kubernetes
+  RABBITMQ_NODE_PORT: 5673
+  PHYSICAL_INTERFACE: eno1
+  VROUTER_GATEWAY: 192.168.122.1
+  KUBERNETES_CLUSTER_PROJECT: {}
+  KERNEL_UPGRADE: true
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
