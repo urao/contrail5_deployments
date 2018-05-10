@@ -33,7 +33,8 @@ PREFIX=24
 6. Install required packages
 ```
 yum install -y epel-release
-yum install -y git ansible net-tools
+yum install -y git python-pip net-tools sshpass
+pip install ansible==2.4.2.0
 ```
 7. Clone contrail-ansible-deployer
 ```
