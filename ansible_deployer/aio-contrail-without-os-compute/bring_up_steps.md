@@ -7,7 +7,9 @@
 4. Install required packages
 ```
 yum install -y epel-release
-yum install -y git ansible net-tools
+yum install -y epel-release
+yum install -y git python-pip net-tools sshpass
+pip install ansible==2.4.2.0
 ```
 5. Clone contrail-ansible-deployer
 ```
