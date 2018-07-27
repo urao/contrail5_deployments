@@ -13,7 +13,8 @@ pip install ansible==2.4.2.0
 tar -zxvf contrail-ansible-deployer-5.0.0-0.40.tgz
 cd contrail-ansible-deployer
 ```
-4. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/ansible_deployer/working-instance-files/instance_contrail_k8s.yaml)
+4. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/ansible_deployer/dpdk/instances.yaml) 
+   into $HOME/contrail-ansible-deployer/config/ folder
 5. Install Contrail with 2 DPDK computes
 ```
 cd contrail-ansible-deployer
