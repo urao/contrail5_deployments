@@ -21,8 +21,14 @@ source /etc/kolla/kolla-toolbox/admin-openrc.sh
 
 openstack image list
 openstack flavor list
-openstack flavor create --ram 1024 --disk 20 --vcpus 1 --public small
-
+if [ "$1" == "dpdk" ]; then
+    echo "creating dpdk required flavor type"
+    openstack flavor create --ram 1024 --disk 20 --vcpus 1 --public small
+    openstack flavor set small --property hw:mem_page_size=large
+else
+    echo "creating kernel required flavor type"
+    openstack flavor create --ram 1024 --disk 20 --vcpus 1 --public small
+fi
 #create virtual-network
 VN_NAME="vn1"
 openstack network create $VN_NAME
