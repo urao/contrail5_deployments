@@ -1,3 +1,4 @@
+### Steps to delete compute node from maria db
 1. Get the container id of the mariadb
 ```
 container_id = docker ps -aqf "name=mariadb"
@@ -15,4 +16,8 @@ DELETE FROM compute_nodes WHERE id="14";
 SELECT id, created_at, updated_at, hypervisor_hostname FROM compute_nodes;
 SELECT id, created_at, updated_at, host FROM services;
 DELETE FROM services WHERE id="101";
+```
+4. Check compute nodes
+```
+openstack hypervisor list
 ```
