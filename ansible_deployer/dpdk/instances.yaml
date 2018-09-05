@@ -56,6 +56,8 @@ contrail_configuration:
   IPFABRIC_SERVICE_HOST: 172.16.80.3
   AAA_MODE: rbac
   two_interface: true
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
 kolla_config:
   kolla_globals:
     kolla_internal_vip_address: 172.16.80.3
