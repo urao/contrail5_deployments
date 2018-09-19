@@ -3,8 +3,9 @@ set -xv
 
 BASE_DIR=/home/root/
 
-echo "Install wget packages"
+echo "Install pre-requistes packages"
 yum install -y wget
+sudo pip install virtualenv
 
 mkdir -p $BASE_DIR/images
 cd $BASE_DIR/images
