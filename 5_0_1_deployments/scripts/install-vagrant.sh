@@ -25,13 +25,13 @@ function install_vagrant_on_centos () {
    /sbin/rcvboxdrv setup
 
    if [[ -z $(vagrant up) ]]; then
-      echo "Vagrant is installed"
+      echo "Vagrant is already installed, Hence exiting!!!"
       exit 0
    else
-      echo "Vagrant is not installed"
+      echo "Vagrant is not installed, Hence installing....."
       yum -y install https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.rpm
       vagrant plugin install vagrant-vbguest
-      exit 1
+      exit 0
    fi
 }
 
