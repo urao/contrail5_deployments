@@ -71,6 +71,7 @@ kubectl get pods -o wide
 kubectl get pods -o wide --show-labels
 kubectl get netpol
 kubectl get service
+kubectl get secrets -n kube-system
 ```
 ### Reference
 1. [Wiki](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/nested-kubernetes.md)
