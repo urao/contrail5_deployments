@@ -31,6 +31,7 @@ function deploy_on_ubuntu ()
 
    swapoff -a
    apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+   apt-get install ipvsadm -y
    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
    echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
    apt-get update -y
