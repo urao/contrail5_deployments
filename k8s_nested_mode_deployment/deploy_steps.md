@@ -58,13 +58,19 @@ kube-scheduler-vm4                    1/1       Running   1          18h
 
 ### Debug commands
 ```
+kubectl get nodes
 kubectl describe node <NODE_NAME>
-kubectl apply -f nested-contrail.yml --dry-run
-tail -f /var/log/contrail/kube-manager/contrail-kube-manager.log . ==> on master node
+kubectl apply -f nested-contrail.yml --dry-run .  ==> Validate if yml is generated correctly
+tail -f /var/log/contrail/kube-manager/contrail-kube-manager.log  ==> on master node
 kubectl describe pod contrail-kube-manager -n kube-system
 kubectl get pods -n kube-system
 docker images
 docker ps -a
+curl -X GET  <USER_NAME>:<PASSWORD> https://hub.juniper.net/v2/contrail/contrail-kubernetes-kube-manager/tags/list   ==> Get tag list for the images
+kubectl get pods -o wide
+kubectl get pods -o wide --show-labels
+kubectl get netpol
+kubectl get service
 ```
 ### Reference
 1. [Wiki](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/nested-kubernetes.md)
