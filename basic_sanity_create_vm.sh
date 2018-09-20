@@ -3,20 +3,21 @@ set -xv
 
 BASE_DIR=/home/root/
 
-echo "Install openstack pkgs"
-yum install -y gcc python-devel
-pip install python-openstackclient
-pip install python-ironicclient
-
-echo "Install wget packages"
+echo "Install pre-requistes packages"
 yum install -y wget
+sudo pip install virtualenv
 
 mkdir -p $BASE_DIR/images
 cd $BASE_DIR/images
 wget http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
 openstack image create "cirros" --disk-format qcow2 --container-format bare --public --file $BASE_DIR/images/cirros-0.4.0-x86_64-disk.img
 
-
+echo "Install openstack pkgs"
+virtualenv .op
+source .op/bin/activate
+yum install -y gcc python-devel
+pip install python-openstackclient
+pip install python-ironicclient
 source /etc/kolla/kolla-toolbox/admin-openrc.sh
 
 openstack image list
