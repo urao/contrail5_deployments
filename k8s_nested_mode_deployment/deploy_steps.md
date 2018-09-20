@@ -56,6 +56,16 @@ kube-proxy-dgczw                      1/1       Running   1          1d
 kube-scheduler-vm4                    1/1       Running   1          18h
 ```
 
+### Debug commands
+```
+kubectl describe node <NODE_NAME>
+kubectl apply -f nested-contrail.yml --dry-run
+tail -f /var/log/contrail/kube-manager/contrail-kube-manager.log . ==> on master node
+kubectl describe pod contrail-kube-manager -n kube-system
+kubectl get pods -n kube-system
+docker images
+docker ps -a
+```
 ### Reference
 1. [Wiki](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/nested-kubernetes.md)
 2. [Contrail Security](https://github.com/fashaikh7/Contrail-Security/wiki/Contrail-Security-with-Kubernetes-(nested-mode)-on-OpenStack)
