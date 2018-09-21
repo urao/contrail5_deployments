@@ -2,8 +2,7 @@
 ### These steps are verified with docker version 1.11.2 and k8s version 1.11.3
 
 ### Prerequisites:
-1. Running cluster with Contrail 5.0 with Kolla Openstack (Ocata) GA build.
-Refer [Deployment_steps](https://github.com/urao/contrail5_deployments/tree/master/ansible_deployer) if needed to create one.
+1. Running cluster with Contrail 5.0 with Kolla Openstack (Ocata) GA build. If you do not already have a cluster, you can create one by using these [steps](https://github.com/urao/contrail5_deployments/tree/master/ansible_deployer)
 
 ### Steps:
 1. Create 2 VMs running Ubuntu 16.04.1 xenial, one master and one slave node
