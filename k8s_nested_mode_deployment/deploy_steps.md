@@ -56,13 +56,12 @@ kube-proxy-dgczw                      1/1       Running   1          1d
 kube-scheduler-vm4                    1/1       Running   1          18h
 ```
 
-### Debug commands
+### Useful k8s commands
 ```
 kubectl get nodes
 kubectl describe node <NODE_NAME>
-kubectl apply -f nested-contrail.yml --dry-run .  ==> Validate if yml is generated correctly
-tail -f /var/log/contrail/kube-manager/contrail-kube-manager.log  ==> on master node
-kubectl describe pod contrail-kube-manager -n kube-system
+kubectl get pods --all-namespaces 
+kubectl exec -it <POD_NAME> -- /bin/bash    ==> Get a shell to a running container
 kubectl get pods -n kube-system
 docker images
 docker ps -a
@@ -73,6 +72,15 @@ kubectl get netpol
 kubectl get service
 kubectl get secrets -n kube-system
 ```
+
+### Debug commands
+```
+kubectl apply -f nested-contrail.yml --dry-run .  ==> Validate if yml is generated correctly
+tail -f /var/log/contrail/kube-manager/contrail-kube-manager.log  ==> on master node
+kubectl describe pod contrail-kube-manager -n kube-system
+```
+
 ### Reference
 1. [Wiki](https://github.com/Juniper/contrail-kubernetes-docs/blob/master/install/kubernetes/nested-kubernetes.md)
 2. [Contrail Security](https://github.com/fashaikh7/Contrail-Security/wiki/Contrail-Security-with-Kubernetes-(nested-mode)-on-OpenStack)
+3. [K8s Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
