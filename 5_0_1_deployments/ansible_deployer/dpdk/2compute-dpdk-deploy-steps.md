@@ -13,19 +13,19 @@ pip install ansible==2.4.2.0
 tar -zxvf contrail-ansible-deployer-5.0.1-0.214.tgz
 cd contrail-ansible-deployer
 ```
-4. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/ansible_deployer/dpdk/instances.yaml) 
+4. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/5_0_1_deployments/ansible_deployer/dpdk/instances.yaml) 
    into $HOME/contrail-ansible-deployer/config/ folder
-5. Configure the servers with required packages 
+5. Add docker registry credentials and make IP address changes as per your topology
+6. Configure the servers with required packages 
 ```
 cd contrail-ansible-deployer
 ansible-playbook -i inventory/ -e orchestrator=openstack playbooks/configure_instances.yml
 ```
-6. Deploy Openstack 
+7. Deploy Openstack 
 ```
 ansible-playbook -i inventory/ playbooks/install_openstack.yml
 ```
-```
-6. Deploy Contrail 
+8. Deploy Contrail 
 ```
 ansible-playbook -i inventory/ -e orchestrator=openstack playbooks/install_contrail.yml
 ```
