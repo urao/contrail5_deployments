@@ -1,0 +1,86 @@
+global_configuration:
+   CONTAINER_REGISTRY: hub.juniper.net/contrail
+   REGISTRY_PRIVATE_INSECURE: false
+   CONTAINER_REGISTRY_USERNAME: <USER_NAME>
+   CONTAINER_REGISTRY_PASSWORD: <PASSWORD>
+provider_config:
+  bms:
+    ssh_pwd: contrail123
+    ssh_user: root
+    ntpserver: 10.10.5.100
+    ssh_public_key: /root/.ssh/id_rsa.pub
+    ssh_private_key: /root/.ssh/id_rsa
+    domainsuffix: localsuffix
+instances:
+  bms1:
+    provider: bms
+    ip: 10.17.1.83
+    roles:
+      config_database:
+      config:
+      control:
+      analytics_database:
+      analytics:
+      webui:
+      openstack_control:
+      openstack_network:
+      openstack_storage:
+      openstack_monitoring:
+  bms2:
+    provider: bms
+    ip: 10.17.1.86
+    roles:
+      openstack_compute:
+      vrouter:
+        PHYSICAL_INTERFACE: bond0
+        CPU_CORE_MASK: "0xf"
+        DPDK_UIO_DRIVER: uio_pci_generic
+        HUGE_PAGES: 64000
+        AGENT_MODE: dpdk
+        DPDK_MEM_PER_SOCKET: 4096
+  bms3:
+    provider: bms
+    ip: 10.17.1.89
+    roles:
+      openstack_compute:
+      vrouter:
+        PHYSICAL_INTERFACE: bond0
+        CPU_CORE_MASK: "0xf"
+        DPDK_UIO_DRIVER: uio_pci_generic
+        HUGE_PAGES: 64000
+        AGENT_MODE: dpdk
+        DPDK_MEM_PER_SOCKET: 4096
+contrail_configuration:
+  CONTRAIL_VERSION: 5.0.1-0.214-queens
+  CLOUD_ORCHESTRATOR: openstack
+  METADATA_PROXY_SECRET: contrail123
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_ADMIN_PASSWORD: contrail123
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  RABBITMQ_NODE_PORT: 5673
+  AAA_MODE: rbac
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  CONTRAIL_CONTAINER_TAG: 5.0.1-0.214-queens
+  KEYSTONE_AUTH_HOST: 10.17.1.83
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  CONTROLLER_NODES: 10.17.1.83
+  OPENSTACK_NODES: 10.17.1.83
+  CONTROL_NODES: 172.16.80.3
+  VROUTER_GATEWAY: 172.16.80.254
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+kolla_config:
+  customize:
+    nova.conf: |
+      [libvirt]
+      virt_type=kvm
+      cpu_mode=host-model
+  kolla_globals:
+    contrail_api_interface_address: 172.16.80.3
+    openstack_release: queens
+    enable_haproxy: "no"
+    enable_ironic: "no"
+    enable_swift: "no"
+  kolla_passwords:
+    keystone_admin_password: contrail123
+    metadata_secret: contrail123
