@@ -1,0 +1,70 @@
+global_configuration:
+  CONTAINER_REGISTRY: hub.juniper.net/contrail
+  REGISTRY_PRIVATE_INSECURE: false
+  CONTAINER_REGISTRY_USERNAME: <USER_NAME>
+  CONTAINER_REGISTRY_PASSWORD: <PASSWORD>
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: contrail123
+    ntpserver: ntp.ubuntu.net
+    domainsuffix: local
+    ssh_public_key: /root/.ssh/id_rsa.pub
+    ssh_private_key: /root/.ssh/id_rsa
+instances:
+  controller:
+    ip: 10.49.166.204
+    provider: bms
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_database:
+      openstack_control:
+      openstack_network:
+      openstack_storage:
+      openstack_monitoring:
+  compute1:
+    ip: 10.49.166.203
+    provider: bms
+    roles:
+      vrouter:
+        VROUTER_GATEWAY: 172.16.80.254
+        PHYSICAL_INTERFACE: eth1
+      openstack_compute:
+  csn1:
+    ip: 10.49.166.125
+    provider: bms
+    roles:
+      vrouter:
+        TSN_EVPN_MODE: true
+        VROUTER_GATEWAY: 172.16.80.254
+        PHYSICAL_INTERFACE: eth1
+contrail_configuration:
+  CONTRAIL_VERSION: 5.0.2-0.360-queens
+  CONTRAIL_CONTAINER_TAG: 5.0.2-0.360-queens
+  CLOUD_ORCHESTRATOR: openstack
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  METADATA_PROXY_SECRET: contrail123
+  JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"
+  RABBITMQ_NODE_PORT: 5673
+  VROUTER_GATEWAY: 172.16.80.254
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  OPENSTACK_VERSION: queens
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  PHYSICAL_INTERFACE: eth1
+  UPGRADE_KERNEL: true
+  AAA_MODE: rbac
+kolla_config:
+  kolla_globals:
+    openstack_release: queens
+    enable_haproxy: no
+    enable_ironic: no
+    enable_swift: no
+  kolla_passwords:
+    keystone_admin_password: contrail123
