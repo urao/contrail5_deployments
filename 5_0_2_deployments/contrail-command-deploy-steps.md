@@ -8,19 +8,19 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 yum install -y docker-ce
 systemctl start docker
 ```
-3. Download docker image on deployer VM
+2. Download docker image on deployer VM
 ```
 docker login hub.juniper.net --username <USER_NAME> --password <PASSWORD>
 docker pull hub.juniper.net/contrail/contrail-command-deployer:5.0.2-0.360
 ```
-4. Copy [command_servers.yml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/command_servers.yml) 
+3. Copy [command_servers.yml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/command_servers.yml) 
    into $HOME/ folder
-5. Add docker registry credentials and make IP address change [IP address on which contrail command will be installed]as per your topology
-6. Execute the below commands from deployer VM, to start just the container
+4. Add docker registry credentials and make IP address change [IP address on which contrail command will be installed]as per your topology
+5. Execute the below commands from deployer VM, to start just the container
 ```
 docker run -t --net host -v $HOME/command_servers.yml:/command_servers.yml -d --privileged --name contrail_command_deployer hub.juniper.net/contrail/contrail-command-deployer:5.0.2-0.360
 ```
-7. Verify contrail_command and contrail_mysql containers are deployed, using command 
+6. Verify contrail_command and contrail_mysql containers are deployed, using command 
 ```
 docker ps -a
 ```
