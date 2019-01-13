@@ -43,3 +43,7 @@ myapp-pod                  1/1       Running   4          4h        10.47.255.24
 registry-console-1-nbrw2   1/1       Running   0          20h       10.47.255.251    computeoc
 router-1-slgqv             1/1       Running   0          20h       192.168.122.62   infraoc
 ```
+## Reference
+[Contrail Wiki Link](https://github.com/Juniper/contrail-kubernetes-docs/tree/master/install/openshift)
+
+[Openshift Command Cheat Sheet](http://design.jboss.org/redhatdeveloper/marketing/openshift_cheatsheet/cheatsheet/images/openshift_cheat_sheet_r3v1.pdf)
