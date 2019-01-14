@@ -1,8 +1,8 @@
 
-## Steps to deploy Contrail 5.0.2 + 1 Kernel computes + 1 CSN
+## Steps to deploy Contrail 5.0.2 + 1 Kernel computes 
 
-1. Bring up 4 Centos 7.5 (1804) Servers or Virtual Machines with recommended specifications for Contrail deployments, 
-   one deployer VM, 1 contrail Controller+OpenStack VM, 1 Compute and 1 CSN
+1. Bring up 3 Centos 7.5 (1804) Servers or Virtual Machines with recommended specifications for Contrail deployments, 
+   one deployer VM, 1 contrail Controller+OpenStack VM, 1 Compute 
 2. Install required packages on deployer VM
 ```
 yum install -y epel-release
