@@ -14,7 +14,7 @@ pip install ansible==2.4.2.0
 tar -zxvf contrail-ansible-deployer-5.0.2-0.360.tgz
 cd contrail-ansible-deployer
 ```
-4. Copy [instances_csn.yaml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/instances.yaml) 
+4. Copy [instances_csn.yaml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/openstack_queens/instances_csn.yaml) 
    into $HOME/contrail-ansible-deployer/config/ folder
 5. Rename instances_csn.yaml to instances.yaml
 5. Add docker registry credentials and make IP address changes as per your topology
