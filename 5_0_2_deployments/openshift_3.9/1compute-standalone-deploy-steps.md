@@ -3,13 +3,13 @@
 
 1. Bring up 3 RHEL 7.5 Servers or Virtual Machines with recommended specifications for Contrail deployments
 2. One Master node, One Contrail node, One Compute node
-3. Install required packages and do subscription on all nodes by the script, [install_pkgs.sh]()
+3. Install required packages and do subscription on all nodes by the script, [install_pkgs.sh](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/openshift_3.9/files/install-pkgs.sh)
 4. Download  [Contrail + Openshift 3.9 5.0.2 GA code](https://www.juniper.net/support/downloads/?p=contrail#sw), on Master node
 ```
 tar -zxvf contrail-openshift-deployer-5.0.2-0.360.tgz
 cd openshift-ansible/
 ```
-4. Copy [ose-install-non-ha](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/openshift_3.9/files/ose-install) 
+4. Copy [ose-install-non-ha](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/openshift_3.9/files/ose-install-non-ha) 
    into $HOME/contrail-ansible-deployer/inventory/ folder as ose-install
 5. Add docker registry credentials and make IP address changes as per your topology
 6. Execute the below commands from Master node.
@@ -21,7 +21,7 @@ ansible-playbook -i inventory/ose-install playbooks/deploy_cluster.yml
 ```
 https://<IP_Address_masteroc_node>:8143
 ```
-8. Set password for the Openshift Console, Run below commands on Master node
+8. To set password for the Openshift Console, run below commands on Master node
 ```
 htpasswd /etc/origin/master/htpasswd admin
 oc adm policy add-cluster-role-to-user cluster-admin admin 
@@ -30,7 +30,7 @@ oc adm policy add-cluster-role-to-user cluster-admin admin
 ```
 https://<FQDN_masteroc_node>:8443/console
 ```
-10. Run sample pod, [pod1.yaml]() on Master node
+10. Run sample pod, [pod1.yaml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/openshift_3.9/examples/pod1.yaml) on Master node
 ```
 oc create -f pod1.yaml
 ```
