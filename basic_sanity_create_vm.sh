@@ -18,6 +18,7 @@ source .op/bin/activate
 yum install -y gcc python-devel
 pip install python-openstackclient
 pip install python-ironicclient
+pip install python-heatclient
 source /etc/kolla/kolla-toolbox/admin-openrc.sh
 
 openstack image list
