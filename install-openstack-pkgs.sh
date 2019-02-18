@@ -5,6 +5,8 @@ sudo pip install virtualenv
 virtualenv .op
 source .op/bin/activate
 sudo pip install python-openstackclient 
+sudo pip install python-heatclient
+
 
 echo "source openrc.sh file"
 source /etc/kolla/kolla-toolbox/admin-openrc.sh
