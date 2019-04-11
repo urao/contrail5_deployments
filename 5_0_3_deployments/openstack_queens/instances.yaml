@@ -1,0 +1,56 @@
+global_configuration:
+  CONTAINER_REGISTRY: hub.juniper.net/contrail
+  REGISTRY_PRIVATE_INSECURE: false
+  CONTAINER_REGISTRY_USERNAME: <USER_NAME>
+  CONTAINER_REGISTRY_PASSWORD: <PASSWORD>
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: c0ntrail123
+    ntpserver: 66.89.191.22
+    domainsuffix: localdomain
+    ssh_public_key: /root/.ssh/id_rsa.pub
+    ssh_private_key: /root/.ssh/id_rsa
+instances:
+  controller:
+    ip: 10.187.1.4
+    provider: bms
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_database:
+      openstack_control:
+      openstack_network:
+      openstack_storage:
+      openstack_monitoring:
+      vrouter:
+        PHYSICAL_INTERFACE: enp129s0f1
+      openstack_compute:
+contrail_configuration:
+  CONTRAIL_VERSION: 5.0.3-0.493-queens
+  CONTRAIL_CONTAINER_TAG: 5.0.3-0.493-queens
+  CLOUD_ORCHESTRATOR: openstack
+  METADATA_PROXY_SECRET: contrail123
+  RABBITMQ_NODE_PORT: 5673
+  KEYSTONE_AUTH_HOST: 10.187.1.4
+  CONTROLLER_NODES: 10.187.1.4
+  OPENSTACK_NODES: 10.187.1.4
+  CONTROL_NODES: 172.16.80.4
+  VROUTER_GATEWAY: 172.16.80.254
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  OPENSTACK_VERSION: queens
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  PHYSICAL_INTERFACE: enp129s0f1
+  AAA_MODE: rbac
+kolla_config:
+  kolla_globals:
+    openstack_release: queens
+    enable_haproxy: no
+    enable_ironic: no
+    enable_swift: no
+  kolla_passwords:
+    keystone_admin_password: contrail123
