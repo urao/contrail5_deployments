@@ -10,7 +10,6 @@ sudo pip install virtualenv
 mkdir -p $BASE_DIR/images
 cd $BASE_DIR/images
 wget http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
-openstack image create "cirros" --disk-format qcow2 --container-format bare --public --file $BASE_DIR/images/cirros-0.4.0-x86_64-disk.img
 
 echo "Install openstack pkgs"
 virtualenv .op
@@ -22,6 +21,7 @@ pip install python-heatclient
 source /etc/kolla/kolla-toolbox/admin-openrc.sh
 
 openstack image list
+openstack image create "cirros" --disk-format qcow2 --container-format bare --public --file $BASE_DIR/images/cirros-0.4.0-x86_64-disk.img
 openstack flavor list
 if [ "$1" == "dpdk" ]; then
     echo "creating dpdk required flavor type"
