@@ -13,7 +13,7 @@ systemctl start docker
 docker login hub.juniper.net --username <USER_NAME> --password <PASSWORD>
 docker pull hub.juniper.net/contrail/contrail-command-deployer:5.0.2-0.360
 ```
-3. Copy [command_servers.yml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/command_servers.yml) 
+3. Copy [command_servers.yml](https://github.com/urao/contrail5_deployments/blob/master/5_0_2_deployments/openstack_queens/command_servers.yml) 
    into $HOME/ folder
 4. Add docker registry credentials and make IP address change [IP address on which contrail command will be installed]as per your topology
 5. Execute the below commands from deployer VM, to start just the container
