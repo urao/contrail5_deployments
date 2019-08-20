@@ -14,7 +14,7 @@ pip install requests
 tar -zxvf contrail-ansible-deployer-5.1.0-0.38.tgz
 cd contrail-ansible-deployer
 ```
-4. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/5_1_deployments/contrail-networking/instances.yaml) 
+4. Copy [instances.yaml](https://github.com/urao/contrail5_deployments/blob/master/5_1_deployments/contrail_networking/instances.yaml) 
    into $HOME/contrail-ansible-deployer/config/ folder
 5. Add docker registry credentials and make IP address changes as per your topology
 6. Execute the below commands from deployer VM.
