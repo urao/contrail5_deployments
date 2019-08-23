@@ -28,4 +28,4 @@ ansible-playbook -i inventory/ -e orchestrator=none playbooks/install_contrail.y
 ```
 
 ## References
-[Contrail_Install](https://www.juniper.net/documentation/en_US/contrail5.1/topics/concept/install-contrail-ocata-kolla-50.html)
+[Contrail Install](https://www.juniper.net/documentation/en_US/contrail5.1/topics/concept/install-contrail-ocata-kolla-50.html)
