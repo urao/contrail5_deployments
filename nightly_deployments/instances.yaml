@@ -1,0 +1,48 @@
+global_configuration:
+  CONTAINER_REGISTRY: hub.juniper.net/contrail-nightly
+  REGISTRY_PRIVATE_INSECURE: false
+  CONTAINER_REGISTRY_USERNAME: XXXXXXXXXXXXXXXXXXX
+  CONTAINER_REGISTRY_PASSWORD: XXXXXXXXXXXXXXXXXXX
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: contrail123
+    ntpserver: ntp.ubuntu.net
+    domainsuffix: local
+    ssh_public_key: /root/.ssh/id_rsa.pub
+    ssh_private_key: /root/.ssh/id_rsa
+instances:
+  controller:
+    ip: 10.78.1.84
+    provider: bms
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_alarm:
+      analytics_database:
+      analytics_snmp:
+      vrouter:
+        PHYSICAL_INTERFACE: enp129s0f1
+contrail_configuration:
+  CONTRAIL_CONTAINER_TAG:  1909.14
+  CONTRAIL_VERSION:  1909.14
+  CLOUD_ORCHESTRATOR: none
+  CONTROLLER_NODES: 10.78.1.84
+  RABBITMQ_NODE_PORT: 5673
+  CONTROL_NODES: 172.16.80.2
+  CONFIG_NODES: 172.16.80.2
+  CONFIGDB_NODES: 172.16.80.2
+  ANALYTICS_NODES: 172.16.80.2
+  ANALYTICS_ALARM_NODES: 172.16.80.2
+  ANALYTICS_ALARM_ENABLE: True
+  ANALYTICS_SNMP_ENABLE: True
+  ANALYTICSDB_ENABLE: True
+  VROUTER_GATEWAY: 172.16.80.254
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  AUTH_MODE: noauth
+  PHYSICAL_INTERFACE: enp129s0f1
+  AAA_MODE: no-auth
+  BGP_ASN: 64512
