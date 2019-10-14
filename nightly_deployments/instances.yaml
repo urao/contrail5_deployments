@@ -46,3 +46,4 @@ contrail_configuration:
   PHYSICAL_INTERFACE: enp129s0f1
   AAA_MODE: no-auth
   BGP_ASN: 64512
+  WEBUI_STATIC_AUTH_PASSWORD: uraotest123
