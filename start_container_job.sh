@@ -29,6 +29,11 @@ error() {
    echo "$(date)>>> ERROR - $1"
 }
 
+warning() {
+   echo ""
+   echo "$(date)>>> WARNING - $1"
+}
+
 STATUS="true"
 check_status() {
    log "Checking the container $CONTAINER_NAME status"
@@ -45,6 +50,20 @@ start_container() {
    else
       log "Started the container $CONTAINER_NAME successfully"
    fi
+   #loop for 40sec, to if container restart is happening
+   for counter in {1..8}
+   do
+      log "Checking if the container $CONTAINER_NAME is restarting...." 
+      RESTART_STATUS=$(docker inspect --format="{{.State.Restarting}}" $CONTAINER_NAME 2> /dev/null) 
+      if [ "$RESTART_STATUS" == "true" ]; then
+         warning "$CONTAINER_NAME is restarting !!"
+         exit 1
+      fi
+      log "Sleep for 5 seconds.." 
+      sleep 5
+   done
+
+   log "Restart is not happening for the container $CONTAINER_NAME" 
 }
 
 check_status
