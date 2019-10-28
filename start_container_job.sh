@@ -15,7 +15,6 @@ fi
 export LOGFILE=/var/log/contrail/start_container_job.log
 exec > >(sudo tee -a $LOGFILE)
 exec 2>&1
-echo "===========  start ============"
 
 # Names to identify containers
 CONTAINER_NAME="control_control_1"
@@ -65,6 +64,9 @@ start_container() {
 
    log "Restart is not happening for the container $CONTAINER_NAME" 
 }
+
+#main
+echo "===========  start ============"
 
 check_status
 
