@@ -1,0 +1,69 @@
+global_configuration:
+  CONTAINER_REGISTRY: hub.juniper.net/contrail
+  REGISTRY_PRIVATE_INSECURE: false
+  CONTAINER_REGISTRY_USERNAME: XXXXXXXXXXXXXXXXX
+  CONTAINER_REGISTRY_PASSWORD: XXXXXXXXXXXXXXXXX
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: contrail123
+    ntpserver: ntp.ubuntu.org
+    domainsuffix: local
+instances:
+  controller:
+    ip: 10.117.1.84
+    provider: bms
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_database:
+      analytics_snmp:
+      openstack_control:
+      openstack_network:
+      openstack_storage:
+      openstack_monitoring:
+      appformix_openstack_controller:
+      vrouter:
+        PHYSICAL_INTERFACE: enp129s0f1
+      openstack_compute:
+      appformix_compute:
+      appformix_controller:
+contrail_configuration:
+  CONTRAIL_CONTAINER_TAG: 1910.23
+  UPGRADE_KERNEL: true
+  CONTRAIL_VERSION:  1910.23
+  CLOUD_ORCHESTRATOR: openstack
+  METADATA_PROXY_SECRET: contrail123
+  RABBITMQ_NODE_PORT: 5673
+  KEYSTONE_AUTH_HOST: 10.117.1.84
+  COLLECTOR_PORT: 18086
+  ANALYTICS_API_INTROSPECT_LISTEN_PORT: 18090
+  CONTROLLER_NODES: 10.117.1.84
+  OPENSTACK_NODES: 10.117.1.84
+  CONTROL_NODES: 172.16.80.2
+  VROUTER_GATEWAY: 172.16.80.254
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  PHYSICAL_INTERFACE: enp129s0f1
+  AAA_MODE: rbac
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+kolla_config:
+  kolla_globals:
+    openstack_release: queens
+    enable_barbican: false
+    enable_haproxy: false
+    enable_ironic: false
+    enable_swift: false
+  kolla_passwords:
+    keystone_admin_password: contrail123
+    metadata_secret: contrail123 
+appformix_configuration:
+    appformix_license:  /opt/software/appformix/appformix-openstack-3.1.sig
+    appformix_kvm_instance_discovery: true
+    network_device_discovery_enabled: true

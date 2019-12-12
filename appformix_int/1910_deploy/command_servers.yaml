@@ -1,0 +1,31 @@
+---
+command_servers:
+    server1:
+        ip: 10.117.1.84
+        connection: ssh
+        ssh_user: root
+        ssh_pass: contrail123
+        sudo_pass: contrail123
+        ntpserver: ntp.ubuntu.org
+
+        registry_insecure: false
+        container_registry: hub.juniper.net/contrail
+        container_tag: 1910.23
+        config_dir: /etc/contrail
+
+        contrail_config:
+            database:
+                type: postgres
+                dialect: postgres
+                password: contrail123
+            keystone:
+                assignment:
+                    data:
+                      users:
+                        admin:
+                          password: contrail123
+            insecure: true
+            client:
+              password: contrail123
+user_command_volumes:
+  - /opt/software/appformix:/opt/software/appformix
